@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Product> productList = new ArrayList<>();
     private RecyclerView recyclerView;
     private ProductAdapter pAdapter;
+    int minteger=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +38,29 @@ public class MainActivity extends AppCompatActivity {
 
         prepareProductData();
     }
+    /*public void increaseInteger(View view) {
+        minteger = minteger + 1;
+        display(minteger);
+
+    }public void decreaseInteger(View view) {
+        minteger = minteger - 1;
+        display(minteger);
+    }
+
+    private void display(int number) {
+        if(number>=0) {
+            TextView displayInteger = (TextView) findViewById(
+                    R.id.btnvalue);
+            displayInteger.setText("" + number);
+        }
+    }*/
 
     private void prepareProductData() {
         Product product = new Product("Algic Eyedrop", "5 ml", 20);
         productList.add(product);
 
-        Product product1 = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product1);
+        product = new Product("Cap_Sr cap", "10 ml", 200);
+        productList.add(product);
 
         pAdapter.notifyDataSetChanged();
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:focusable="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
@@ -21,16 +21,55 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/product_Packing"
+        android:id="@+id/product_Price"
         android:layout_below="@id/product_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/product_Price"
+        android:id="@+id/product_Packing"
         android:textColor="@color/year"
         android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/buttonplus"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_toRightOf="@id/product_Packing"
+        android:text="+"
+        android:background="@color/buttoncolor"
+        android:layout_alignBaseline="@id/product_Price"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+         />
+    <TextView
+        android:id="@+id/btnvalue"
+        android:textColor="@color/year"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:background="@color/buttoncolor"
+        android:layout_toRightOf="@id/buttonplus"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_alignBaseline="@id/product_Price"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/buttonminus"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:text="-"
+        android:layout_toRightOf="@id/btnvalue"
+        android:background="@color/buttoncolor"
+        android:layout_alignBaseline="@id/product_Price"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+
+        />
+
 
 </RelativeLayout>

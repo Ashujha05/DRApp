@@ -13,6 +13,7 @@ public class Product {
     private int productPrice;
     private int offerId;
     private boolean isActive;
+    int productQuantity;
 
     public Product() {
 
@@ -31,6 +32,7 @@ public class Product {
         this.productName=productName;
         this.productPacking = productPacking;
         this.productPrice = productPrice;
+        this.productQuantity = 0;
 
     }
 
