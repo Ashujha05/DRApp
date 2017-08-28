@@ -1,6 +1,5 @@
 package in.co.mtspl.dr.momentous;
 
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +16,6 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
 
     private List<Product> productsList;
-    private  final Handler mHandler = new Handler();
-    int count=0;
-    int minteger=0;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView productName, productPacking, productPrice,btnValue;
         public Button buttonplus, buttonminus;
@@ -51,7 +47,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-         count=0;
         Product product = productsList.get(position);
         holder.productName.setText(product.getProductName());
         holder.productPacking.setText(product.getProductPacking());
