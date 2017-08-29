@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="in.co.mtspl.dr.momentous.MainActivity">
+    tools:context="in.co.mtspl.dr.momentous.filteredProductActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,19 +18,17 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-           />
+          />
         <Button
-            android:id="@+id/checkoutbtn"
+            android:id="@+id/place_order"
             android:layout_width="115dp"
             android:layout_height="match_parent"
-            android:text="checkout >"
+            android:text="Place Order >"
             android:layout_gravity="right"
             android:background="?attr/colorPrimary"
             />
-
     </android.support.design.widget.AppBarLayout>
 
-        <include layout="@layout/content_main"/>
-
+    <include layout="@layout/content_main"/>
 
 </android.support.design.widget.CoordinatorLayout>

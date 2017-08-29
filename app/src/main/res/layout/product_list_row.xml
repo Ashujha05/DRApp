@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/product_Packing"
-        android:textColor="@color/year"
+        android:textColor="@color/title"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
@@ -39,10 +39,12 @@
         android:layout_marginStart="30dp"
         android:layout_toRightOf="@id/product_Packing"
         android:text="+"
+        android:textColor="@color/year"
         android:background="@color/buttoncolor"
         android:layout_alignBaseline="@id/product_Price"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:textStyle="bold"
          />
     <TextView
         android:id="@+id/btnvalue"
@@ -63,12 +65,13 @@
         android:layout_width="40dp"
         android:layout_height="30dp"
         android:text="-"
+        android:textColor="@color/year"
         android:layout_toRightOf="@id/btnvalue"
         android:background="@color/buttoncolor"
         android:layout_alignBaseline="@id/product_Price"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-
+        android:textStyle="bold"
         />
 
 

@@ -42,7 +42,7 @@ public class filteredProductAdapter extends RecyclerView.Adapter<filteredProduct
         Product product = filteredProductsList.get(position);
         holder.productName.setText(product.getProductName());
         holder.productPacking.setText(product.getProductPacking());
-        holder.productQuantity.setText(String.valueOf(product.productQuantity));
+        holder.productQuantity.setText("Quantity : "+String.valueOf(product.productQuantity));
     }
 
     @Override

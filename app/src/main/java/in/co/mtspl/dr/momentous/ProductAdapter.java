@@ -50,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = productsList.get(position);
         holder.productName.setText(product.getProductName());
         holder.productPacking.setText(product.getProductPacking());
-        holder.productPrice.setText(String.valueOf(product.getProductPrice()));
+        holder.productPrice.setText("Rs "+String.valueOf(product.getProductPrice()));
         holder.btnValue.setText(String.valueOf(product.productQuantity));
         holder.buttonplus.setTag(position);
         holder.buttonplus.setOnClickListener(new View.OnClickListener() {
