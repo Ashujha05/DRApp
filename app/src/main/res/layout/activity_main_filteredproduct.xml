@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:saveEnabled="false"
     tools:context="in.co.mtspl.dr.momentous.filteredProductActivity">
 
     <android.support.design.widget.AppBarLayout

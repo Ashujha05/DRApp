@@ -1,5 +1,8 @@
 package in.co.mtspl.dr.momentous;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by amreshkumar on 27/08/17.
  */
@@ -10,17 +13,24 @@ public class Product {
     private int productCode;
     private String productName;
     private String productPacking;
-    private int productPrice;
+    private String productPrice;
     private int offerId;
     private boolean isActive;
     int productQuantity;
 
-    public Product() {
+    public Product(JSONObject jo) throws JSONException {
 
+        this.productId=jo.getInt("product_id");
+        this.productName=jo.getString("product_name");
+        this.productPacking = jo.getString("product_packing");
+        this.productPrice = jo.getString("product_price");
+        this.productQuantity = 0;
     }
 
   /*  public Product(int productId, int productCode, String productName, String productPacking, int productPrice, int offerId, boolean isActive) {
+
         this.productId = productId;
+
         this.productCode = productCode;
         this.productName = productName;
         this.productPacking = productPacking;
@@ -28,7 +38,7 @@ public class Product {
         this.offerId = offerId;
         this.isActive = isActive;
     }*/
-    public Product(String productName, String productPacking, int productPrice) {
+    public Product(String productName, String productPacking, String productPrice) {
         this.productName=productName;
         this.productPacking = productPacking;
         this.productPrice = productPrice;
@@ -68,11 +78,11 @@ public class Product {
         this.productPacking = productPacking;
     }
 
-    public int getProductPrice() {
+    public String getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
     }
 

@@ -49,4 +49,6 @@ public class filteredProductAdapter extends RecyclerView.Adapter<filteredProduct
     public int getItemCount() {
         return filteredProductsList.size();
     }
+
+
 }

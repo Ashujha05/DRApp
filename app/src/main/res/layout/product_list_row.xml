@@ -33,26 +33,28 @@
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/buttonplus"
+        android:id="@+id/buttonminus"
         android:layout_width="40dp"
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
         android:layout_toRightOf="@id/product_Packing"
-        android:text="+"
+        android:text="-"
         android:textColor="@color/year"
         android:background="@color/buttoncolor"
         android:layout_alignBaseline="@id/product_Price"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textStyle="bold"
-         />
+        android:saveEnabled="true"
+
+        />
     <TextView
         android:id="@+id/btnvalue"
         android:textColor="@color/year"
         android:layout_width="40dp"
         android:layout_height="30dp"
         android:background="@color/buttoncolor"
-        android:layout_toRightOf="@id/buttonplus"
+        android:layout_toRightOf="@id/buttonminus"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_alignBaseline="@id/product_Price"
@@ -61,10 +63,10 @@
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/buttonminus"
+        android:id="@+id/buttonplus"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:text="-"
+        android:text="+"
         android:textColor="@color/year"
         android:layout_toRightOf="@id/btnvalue"
         android:background="@color/buttoncolor"
@@ -72,6 +74,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textStyle="bold"
+        android:saveEnabled="true"
         />
 
 

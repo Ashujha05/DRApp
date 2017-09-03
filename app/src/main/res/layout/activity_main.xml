@@ -26,6 +26,7 @@
             android:text="checkout >"
             android:layout_gravity="right"
             android:background="?attr/colorPrimary"
+
             />
 
     </android.support.design.widget.AppBarLayout>

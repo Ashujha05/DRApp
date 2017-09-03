@@ -7,9 +7,17 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private ProductAdapter pAdapter;
     private Button submitButton;
-
+    public static final String JSON_URL = "http://192.168.1.4:8000/product/?format=json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        submitButton=(Button)findViewById(R.id.submit);
+        submitButton = (Button) findViewById(R.id.checkoutbtn);
         submitButton.setOnClickListener(this);
         pAdapter = new ProductAdapter(productList);
         recyclerView.setHasFixedSize(true);
@@ -39,19 +47,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(pAdapter);
+        recyclerView.setEnabled(false);
+        recyclerView.setClickable(false);
 
-        prepareProductData();
     }
 
-    public void onClick(View v)
-    {
-        if (v == submitButton)
-        {
-            ArrayList<Product> filteredProdArray= new ArrayList<Product>();
-            for(int i=0;i<productList.size();i++)
-            {
-                if(productList.get(i).productQuantity>0)
-                {
+    private void sendRequest() {
+
+        StringRequest stringRequest = new StringRequest(JSON_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        showJSON(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void showJSON(String json) {
+        ParseJSON pj = new ParseJSON(json);
+        productList.addAll(pj.parseJSON());
+        pAdapter.notifyDataSetChanged();
+    }
+
+
+    public void onClick(View v) {
+        if (v == submitButton) {
+            ArrayList<Product> filteredProdArray = new ArrayList<Product>();
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i).productQuantity > 0) {
                     filteredProdArray.add(productList.get(i));
                 }
             }
@@ -59,36 +90,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, filteredProductActivity.class);
             startActivity(intent);
         }
-
     }
 
-    private void prepareProductData() {
-        Product product = new Product("Algic Eyedrop", "5 ml", 20);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
-        product = new Product("Cap_Sr cap", "10 ml", 200);
-        productList.add(product);
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (productList != null) {
+            productList.clear();
+        }
+        sendRequest();
 
-        pAdapter.notifyDataSetChanged();
 
     }
 }

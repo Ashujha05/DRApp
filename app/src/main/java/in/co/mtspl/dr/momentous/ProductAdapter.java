@@ -16,8 +16,9 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
 
     private List<Product> productsList;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView productName, productPacking, productPrice,btnValue;
+        public TextView productName, productPacking, productPrice, btnValue;
         public Button buttonplus, buttonminus;
 
         public MyViewHolder(View view) {
@@ -25,9 +26,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             productName = (TextView) view.findViewById(R.id.product_Name);
             productPacking = (TextView) view.findViewById(R.id.product_Packing);
             productPrice = (TextView) view.findViewById(R.id.product_Price);
-            btnValue=(TextView) view.findViewById(R.id.btnvalue);
-            buttonplus=(Button) view.findViewById(R.id.buttonplus);
-            buttonminus=(Button) view.findViewById(R.id.buttonminus);
+            btnValue = (TextView) view.findViewById(R.id.btnvalue);
+            buttonplus = (Button) view.findViewById(R.id.buttonplus);
+            buttonminus = (Button) view.findViewById(R.id.buttonminus);
 
         }
     }
@@ -50,13 +51,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = productsList.get(position);
         holder.productName.setText(product.getProductName());
         holder.productPacking.setText(product.getProductPacking());
-        holder.productPrice.setText("Rs "+String.valueOf(product.getProductPrice()));
+        if (product.getProductPrice() != null && !product.getProductPrice().isEmpty()) {
+            holder.productPrice.setText("Rs " + product.getProductPrice());
+        } else {
+            holder.productPrice.setText("");
+        }
         holder.btnValue.setText(String.valueOf(product.productQuantity));
         holder.buttonplus.setTag(position);
         holder.buttonplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Product product = productsList.get((Integer)view.getTag());
+                Product product = productsList.get((Integer) view.getTag());
                 product.productQuantity += 1;
                 notifyDataSetChanged();
             }
@@ -65,14 +70,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.buttonminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Product product = productsList.get((Integer)view.getTag());
-                if(product.productQuantity>0) {
+                Product product = productsList.get((Integer) view.getTag());
+                if (product.productQuantity > 0) {
                     product.productQuantity -= 1;
                     notifyDataSetChanged();
                 }
             }
         });
-}
+    }
 
 
     @Override
